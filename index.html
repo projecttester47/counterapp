@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Counter with Dynamic Target</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -14,30 +15,47 @@
             background-position: center;
             /* Make the background fixed (so it doesn't scroll with content) */
             background-attachment: fixed;
+            margin: 0; /* Remove default margin to match parent width */
+        }
+
+        .container {
+            border: 2px solid #333; /* Add a border around the container */
+            padding: 20px; /* Add some padding for spacing */
+            margin: 20px auto; /* Center the container horizontally */
+            max-width: 400px; /* Limit the maximum width of the container */
         }
 
         h1 {
             color: #333;
+            font-weight: bold; /* Make the font bold */
+            font-size: 36px; /* Increase the font size */
+            margin-top: 20px; /* Add some top margin for spacing */
         }
 
         p {
-            font-size: 18px;
+            font-size: 24px; /* Increase the font size */
+            color: #555; /* Change text color for better readability */
+            margin-bottom: 10px; /* Add bottom margin for spacing */
         }
 
         input[type="number"] {
             width: 60px;
             text-align: center;
-            font-size: 16px;
+            font-size: 20px; /* Increase the font size */
+            font-weight: bold; /* Make the font bold */
+            color: #333; /* Change text color for better readability */
         }
     </style>
 </head>
 <body>
-    <h1>Counter</h1>
-    <p>Target: <input type="number" id="target" value="10" onclick="setTarget()"></p>
-    <p>Current Count: <span id="count">0</span></p>
-    
-    <!-- Audio element for the sound -->
-    <audio id="audio" src="SlowMorning.mp3" preload="auto"></audio>
+    <div class="container">
+        <h1>Counter</h1>
+        <p>Target: <input type="number" id="target" value="10" onclick="setTarget()"></p>
+        <p>Current Count: <span id="count">0</span></p>
+        
+        <!-- Audio element for the sound -->
+        <audio id="audio" src="SlowMorning.mp3" preload="auto"></audio>
+    </div>
 
     <script>
         // Function to increment the counter
