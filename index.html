@@ -41,7 +41,6 @@
     <h1>Counter</h1>
     <p>Target: <input type="number" id="target" value="10"></p>
     <p>Current Count: <span id="count">0</span></p>
-    <button onclick="incrementCounter()">Increment</button>
     <button onclick="setTarget()">Set Target</button>
     
     <!-- Audio element for the sound -->
@@ -74,6 +73,9 @@
                 targetElement.value = newTarget;
             }
         }
+
+        // Add an event listener to the document to increment the counter on any click
+        document.addEventListener("click", incrementCounter);
     </script>
 </body>
 </html>
