@@ -6,6 +6,14 @@
         body {
             font-family: Arial, sans-serif;
             text-align: center;
+            /* Set the background image */
+            background-image: url('om.jpg');
+            /* Make the background cover the entire viewport */
+            background-size: cover;
+            /* Center the background image */
+            background-position: center;
+            /* Make the background fixed (so it doesn't scroll with content) */
+            background-attachment: fixed;
         }
 
         h1 {
@@ -44,7 +52,7 @@
     <button onclick="setTarget()">Set Target</button>
     
     <!-- Audio element for the sound -->
-    <audio id="audio" src="SlowMorning.mp3"></audio>
+    <audio id="audio" src="SlowMorning.mp3" preload="auto"></audio>
 
     <script>
         // Function to increment the counter
