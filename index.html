@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Counter with Dynamic Target</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        p {
+            font-size: 18px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        input[type="number"] {
+            width: 60px;
+            text-align: center;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Counter</h1>
+    <p>Target: <input type="number" id="target" value="10"></p>
+    <p>Current Count: <span id="count">0</span></p>
+    <button onclick="incrementCounter()">Increment</button>
+    <button onclick="setTarget()">Set Target</button>
+    
+    <!-- Audio element for the sound -->
+    <audio id="audio" src="mixkit-digital-clock-digital-alarm-buzzer-992.wav"></audio>
+
+    <script>
+        // Function to increment the counter
+        function incrementCounter() {
+            var countElement = document.getElementById("count");
+            var targetElement = document.getElementById("target");
+            var audio = document.getElementById("audio");
+            
+            // Increment the counter
+            var currentCount = parseInt(countElement.innerText, 10) + 1;
+            countElement.innerText = currentCount;
+
+            // Check if the target is met
+            if (currentCount >= parseInt(targetElement.value, 10)) {
+                // Play the sound
+                audio.play();
+            }
+        }
+
+        // Function to set the target
+        function setTarget() {
+            var targetElement = document.getElementById("target");
+            var newTarget = parseInt(prompt("Enter a new target:"), 10);
+
+            if (!isNaN(newTarget)) {
+                targetElement.value = newTarget;
+            }
+        }
+    </script>
+</body>
+</html>
