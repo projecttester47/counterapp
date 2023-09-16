@@ -51,16 +51,28 @@
 <body>
     <div class="container">
         <h1>Counter</h1>
-        <p>Target: <input type="number" id="target" value="10" onclick="setTarget()"></p>
+        <p>Target: <input type="number" id="target" value="11" onclick="setTarget()"></p>
         <p>Current Count: <span id="count">0</span></p>
         
+        <!-- Add buttons to set the target to 28 and 108 -->
+		<div>
+			<button id="setTargetTo28" onclick="setTargetTo28()">Set Target to 28</button>
+			<button id="setTargetTo108" onclick="setTargetTo108()">Set Target to 108</button>
+		</div>
+        
         <!-- Audio element for the sound -->
-        <audio id="audio" src="SlowMorning.mp3" preload="auto"></audio>
+        <audio id="audio" src="DayBreak.mp3" preload="auto"></audio>
     </div>
 
     <script>
+        var isTargetMet = false; // Flag to track if the target is met
+
         // Function to increment the counter
         function incrementCounter() {
+            if (isTargetMet) {
+                return; // If the target is already met, do nothing
+            }
+
             var countElement = document.getElementById("count");
             var targetElement = document.getElementById("target");
             var audio = document.getElementById("audio");
@@ -73,6 +85,7 @@
             if (currentCount >= parseInt(targetElement.value, 10)) {
                 // Play the sound
                 audio.play();
+                isTargetMet = true; // Set the flag to indicate target met
             }
         }
 
@@ -86,6 +99,7 @@
             if (!isNaN(newTarget)) {
                 targetElement.value = newTarget;
                 countElement.innerText = "0"; // Reset the current count to zero
+                isTargetMet = false; // Reset the flag
             }
         }
 
@@ -96,6 +110,35 @@
 
         // Add an event listener to the document to increment the counter on any click
         document.addEventListener("click", incrementCounter);
+
+        // Add event listeners to the buttons to prevent their clicks from being counted
+        document.getElementById("setTargetTo28").addEventListener("click", function (e) {
+            e.stopPropagation();
+        });
+
+        document.getElementById("setTargetTo108").addEventListener("click", function (e) {
+            e.stopPropagation();
+        });
+
+        // Function to set the target to 28
+        function setTargetTo28() {
+            var targetElement = document.getElementById("target");
+            var countElement = document.getElementById("count");
+            var audio = document.getElementById("audio");
+            targetElement.value = 28; // Set the target to 28
+            countElement.innerText = "0"; // Reset the current count to zero
+            isTargetMet = false; // Reset the flag
+        }
+
+        // Function to set the target to 108
+        function setTargetTo108() {
+            var targetElement = document.getElementById("target");
+            var countElement = document.getElementById("count");
+            var audio = document.getElementById("audio");
+            targetElement.value = 108; // Set the target to 108
+            countElement.innerText = "0"; // Reset the current count to zero
+            isTargetMet = false; // Reset the flag
+        }
     </script>
 </body>
 </html>
